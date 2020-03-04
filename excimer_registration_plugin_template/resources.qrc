@@ -1,0 +1,5 @@
+<RCC>
+    <qresource prefix="/plugins/excimer_registration" >
+        <file>icon.png</file>
+    </qresource>
+</RCC>
