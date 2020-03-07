@@ -9,11 +9,11 @@ author-email = "ravery@ucsb.edu"
 home-page = "https://github.com/rbavery/excimer_referencer"
 classifiers = ["License :: OSI Approved :: MIT License"]
 requires = [
-    pandas,
-    scikit-image, 
-    numpy,
-    affine,
-    GDAL,
-    fire
+    "pandas",
+    "scikit-image", 
+    "numpy",
+    "affine",
+    "GDAL",
+    "fire"
 ]
 requires-python = ">=3.6"
