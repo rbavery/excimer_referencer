@@ -17,3 +17,6 @@ requires = [
     "fire"
 ]
 requires-python = ">=3.6"
+
+[tool.flit.scripts]
+referencer = "excimer_referencer:referencer"
