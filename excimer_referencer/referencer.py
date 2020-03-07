@@ -155,7 +155,7 @@ def georef_by_crs_img_meta(row, outfolder):
     ds = driver.Create(dst_filename, xsize=int(row['source_size_x']), ysize=int(row['source_size_y']), bands=3)
 
     srs = osr.SpatialReference()
-    srs.ImportFromEPSG(6507) # epsg code for 2D cartesian coordinates
+    srs.ImportFromEPSG(8896) # epsg code for 2D cartesian coordinates
     ds.SetProjection(srs.ExportToWkt())
 
     gt = list(row['affine_transform'])[0:6]
