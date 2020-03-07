@@ -49,11 +49,11 @@ def get_meta_img_matches(folder_path, align_path_pattern, img_path_pattern):
 
     align_paths = list(images_p.glob(align_path_pattern))
     if len(align_paths) == 0:
-        raise ValueError(f"No align files found with pattern {align_path_pattern}. Did you forget quotes around the wildcard pattern?")
+        raise ValueError(f"No align files found with pattern {align_path_pattern} in folder {folder_path}. Did you forget quotes around the wildcard pattern?")
     img_paths = list(images_p.glob(img_path_pattern))
     img_paths = list(set(img_paths) - set(align_paths))
     if len(img_paths) == 0:
-        raise ValueError(f"No image files found with pattern {img_path_pattern}.  Did you forget quotes around the wildcard pattern?")
+        raise ValueError(f"No image files found with pattern {img_path_pattern} in folder {folder_path}.  Did you forget quotes around the wildcard pattern?")
 
     matches = []
     for a in align_paths:
@@ -209,10 +209,6 @@ def reference_all(infolder, outfolder, img_path_pattern="ScanImage*.png", align_
     print(f"All done! Check results in {outfolder}")
         
 def cli_helper():
-    import os
-    abspath = os.path.abspath(__file__)
-    dname = os.path.dirname(abspath)
-    os.chdir(dname)
     fire.Fire(reference_all)
 
 if __name__ == "__main__":
