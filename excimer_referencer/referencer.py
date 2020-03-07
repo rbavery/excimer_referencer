@@ -176,7 +176,7 @@ def georef_by_crs_img_meta(row, outfolder):
 #     for func in funcs:
 #         image_df.apply(func, axis=1)
         
-def reference_all(infolder, outfolder, img_path_pattern="ScanImage*.png", align_path_pattern="*.Align",):
+def reference_all(infolder, outfolder, img_path_pattern="*", align_path_pattern="*.Align",):
     """This spatially references all images in a folder and saves .tifs to another 
     folder. 
     
@@ -194,23 +194,22 @@ def reference_all(infolder, outfolder, img_path_pattern="ScanImage*.png", align_
             The path to the folder to save the spatially referenced images.
         img_path_pattern str:
             wildcard pattern used to create a list of image files to match to
-            align files. Defaults to "ScanImage*.png". All paths matching the 
+            align files. Defaults to "*". All paths matching the 
             align_pattern_path will be removed from the list derived from this
             path, so that that a wildcard pattern of "*" can represent all 
             images.
         align_path_pattern str:
             wildcard pattern used to create a list of align files to match to
-            image files. Defaults to "ScanImage*.Align"
+            image files. Defaults to all align files with "*.Align"
     """
     print(f"Using wildcard patterns {img_path_pattern} and {align_path_pattern}")
     image_df = folder_metadata_to_df(infolder, align_path_pattern, img_path_pattern)
     image_df = calculate_transforms(image_df)
     image_df.apply(lambda row: georef_by_crs_img_meta(row, outfolder), axis=1)
     print(f"All done! Check results in {outfolder}")
-        
+# flit publishing requires entrypoint to be a function, so we wrap the fire call of the reference function in this helper.
 def cli_helper():
     fire.Fire(reference_all)
 
 if __name__ == "__main__":
-    #fire.Fire(reference_all)
     cli_helper()
