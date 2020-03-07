@@ -19,4 +19,4 @@ requires = [
 requires-python = ">=3.6"
 
 [tool.flit.scripts]
-referencer = "excimer_referencer:referencer"
+referencer = "excimer_referencer.referencer:cli_helper"

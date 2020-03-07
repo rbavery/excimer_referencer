@@ -209,5 +209,9 @@ def reference_all(infolder, outfolder, align_path_pattern="*.Align", img_path_pa
     image_df.apply(lambda row: georef_by_crs_img_meta(row, outfolder), axis=1)
     print(f"All done! Check results in {outfolder}")
         
+    def cli_helper():
+        fire.Fire(reference_all)
+
 if __name__ == "__main__":
-    fire.Fire(reference_all)
+    #fire.Fire(reference_all)
+    cli_helper()
