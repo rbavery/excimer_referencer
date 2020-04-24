@@ -1,0 +1,15 @@
+name: referencer
+channels:
+  - conda-forge
+dependencies:
+  - pandas
+  - scikit-image 
+  - numpy
+  - affine
+  - gdal
+  - fire
+  - pip
+  - pip :
+    - flit
+
+

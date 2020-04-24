@@ -1,8 +1,9 @@
 `excimer_referencer` is a tool to convert and spatially reference .png, .bmp, and .jpg files produced from a laser ablation system into geotiffs that can be imported into QGIS.
 
-It can be installed from pypi with `pip install excimer_referencer`
+It can be installed from pypi with `pip install excimer_referencer`.
 
-The tool depends on some dependencies that are difficult to install with pip alone (GDAL). So it's best to set up a silo-ed programming enviornment specifically for the tool.
+The tool depends on some dependencies that are difficult to install with pip alone (GDAL). On some machines, `pip install excimer_referencer` might work if GDAL is already installed and configured in a certain way.
+But if this doesn't work right away, it's best to set up a silo-ed programming enviornment specifically for the referencer tool.
 
 After cloning/downloading this repository, set up the environment with the following:
 1. Make sure that you have Anaconda python 3.7 installed for your operating system. See: https://www.anaconda.com/distribution/
@@ -12,7 +13,9 @@ After cloning/downloading this repository, set up the environment with the follo
 ```
 conda env create -f environment.yml
 conda activate referencer
-pip install excimer_referencer
+flit install --symlink --python $(which python) 
+# flit is a tool for quickly publishing python packages for the world, but we use it here to do a development install
+# if you edit the refgerencer code, those changes will appear when you try to run the referencer command line tool.
 ```
 
 Whenever you need to use the excimer_referencer tool, you will need to run `conda activate referencer` first.
